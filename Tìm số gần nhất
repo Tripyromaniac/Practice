@@ -1,0 +1,44 @@
+Cho mảng số nguyên A đã sắp xếp tăng dần, tìm trong mảng k số có giá trị gần với giá trị x nhất.
+
+INPUT
+Dòng đầu tiên cho biết số phần tử của mảng
+Dòng thứ 2 là toàn bộ mảng liệt kê trên một hàng, các phần tử cách nhau bởi khoảng trắng
+Dòng cuối cùng lần lượt là 02 số k và x
+
+OUTPUT
+k số có giá trị gần với x nhất trong mảng. 
+Các số này được xuất theo thứ tự tăng dần (trong trường hợp mảng có nhiều số có cùng khoảng cách tới x, ưu tiên chọn số có giá trị nhỏ hơn)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n = int(input())
+A = [int(i) for i in input().split()]
+k, x = map(int, input().split())
+def SoGanNhat(n, A, k, x):
+  min = float('inf')
+  for i in range(n):
+    if min >= abs(A[i] -x):
+      index = i
+      min = abs(A[i] -x)
+  a, b = index - 1, index + 1
+  result = [A[index]]
+  k -= 1
+  while (k > 0):
+    if b >= n:
+      for i in range(a - k + 1 , a + 1):
+        result.append(A[i])
+      k = 0
+    elif a < 0:
+      for i in range(b, b + k):
+        result.append(A[i])
+      k = 0
+    elif abs(A[a] - x) > abs(A[b] - x):
+      result.append(A[b])
+      b += 1
+    else:
+      result.append(A[a])
+      a -= 1
+    k -= 1
+  for i in sorted(result):
+    print(i, end = " ") 
+SoGanNhat(n, A, k ,x)
