@@ -1,0 +1,20 @@
+Kiểm tra 2 chuỗi nhập vào có phải là chuỗi nghịch đảo hay không.
+
+INPUT
+Dòng đầu tiên chứa chuỗi thứ nhất. Dòng kế tiếp chứa chuỗi thứ 2.
+
+OUTPUT
+Xuất YES nếu 2 chuỗi là nghịch đảo. Ngược lại, xuất NO.
+
+
+----------------------------------------------------------------------------------------------------------
+strg = str(input())
+strg2 = str(input())
+
+i = 0
+while i < len(strg):
+    if ord(strg[i]) != ord(strg2[-(i+1)]):
+        print('NO')
+        exit(0)
+    i = i + 1
+print('YES')
