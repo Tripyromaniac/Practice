@@ -1,0 +1,34 @@
+Viết chương trình rút gọn phân số.
+
+INPUT
+Dòng đầu tiên là một số nguyên nn (1 ≤ n ≤ 100)— Số lượng phân số cần rút gọn
+nn dòng tiếp theo là hai số nguyên a,b (a,b ≥ 1) — a,b lần lượt là tử số và mẫu số.
+
+OUTPUT
+Ứng với n dòng, in ra theo thứ tự tử số và mẫu số (cách nhau một khoảng trắng) sau khi rút gọn; mẫu số chỉ được in khi lớn hơn 1.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n = int(input())
+lst = []
+
+def uscln(a, b):
+    if (b == 0):
+        return a;
+    return uscln(b, a % b);
+
+for i in range(0,n):
+    lst.append([])
+    tu, mau = map(int, input().split())
+    lst[i].append(tu)
+    lst[i].append(mau)
+    bc = uscln(lst[i][0], lst[i][1])
+    lst[i][0] = int(lst[i][0]//bc)
+    lst[i][1] = int(lst[i][1]//bc)
+
+for j in range(0,n):
+    if lst[j][1] == 1:
+        print(lst[j][0])
+    else:
+        print(lst[j][0], end=' ')
+        print(lst[j][1])
