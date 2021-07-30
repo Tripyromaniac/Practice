@@ -1,0 +1,39 @@
+Cho hai chuỗi s, t chỉ gồm những kí tự Latin và có độ dài bằng nhau. Bạn có thể thực hiện nhiều lần biến đổi trên hai chuỗi đó.
+Một phép biến đổi bạn được phép thay thế một kí tự ở vị trí bất kì trong chuỗi đó thành kí tự liền kề với nó (trái hoặc phải).
+Ví dụ: bạn có chuỗi s = "acbc", bạn có thể thực hiện những phép biến đổi sau:
+•	thay s2=s1, kết quả thu được: "aabc".
+•	thay s1=s2, kết quả thu được: "ccbc".
+•	thay s3=s2 hoặc s3=s4, kết quả thu được: "accc".
+•	thay s2=s3, kết quả thu được: "abbc".
+•	thay s4=s3, kết quả thu được: "acbb".
+Lưu ý: Bạn được phép thực hiện nhiều phép biến đổi trên cả 2 chuỗi s, t
+Nhiệm vụ của bạn là sau khi thực hiện một loạt các phép biến đổi theo quy tắc trên cho hai chuỗi s và  t thì ta có thể thu được hai chuỗi bằng nhau hay không?
+
+INPUT:
+Dòng đầu tiên là một số nguyên qq (1 ≤ q ≤ 100) — số lượng testcase. Với mỗi testcase theo sau bởi 2 dòng:
+Dòng đầu tiên là một chuỗi ss (1≤|s|≤100)— chỉ gồm các chữ cái Latin viết thường.
+Dòng thứ hai là một chuỗi tt (1≤|t|≤100, |t|=|s|)— chỉ gồm các chữ cái Latin viết thường.
+
+OUTPUT:
+Ứng với mỗi testcase xuất trên 1 dòng.
+Nếu có thể biến hai chuỗi s và  t thành chuỗi bằng nhau, xuất YES
+Ngược lại xuất NO
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n = int(input())
+
+def similarStr(a, b):
+    for i in a:
+        if i in b:
+            return 1
+    return 0
+    
+for i in range(n):
+    a = input()
+    b = input()
+    if similarStr(a, b):
+        print('YES')
+    else:
+        print('NO')
