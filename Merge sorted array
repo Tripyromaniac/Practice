@@ -1,0 +1,18 @@
+Cho 2 dãy số nguyên a có na số và b có nb số, mỗi dãy đã được sắp xếp theo thứ tự tăng dần. 
+Hãy trộn hai dãy này lại để kết quả cuối cùng là một dãy tăng dần với  các phần tử là các phần tử của a và b.
+
+INPUT
+Dòng đầu tiên chứa kích thước của hai mảng nhập vào na, nb (0 < na, nb <= 100000)
+Hai dòng tiếp theo lần lượt chứa các phần tử của mảng a và b
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+a,b = map(int, input().split())
+
+lsta = [int(lsta) for lsta in input().split()]
+lstb = [int(lstb) for lstb in input().split()]
+
+lstAns = sorted(lsta + lstb)
+
+for i in range(len(lstAns)):
+    print(lstAns[i], end=' ')
