@@ -1,0 +1,37 @@
+Trong xử lý ảnh y khoa, người ta đôi lúc chỉ quan tâm đến một vùng nhỏ của bức ảnh. 
+Với đầu vào là một bức ảnh nhị phân I với các điểm màu trắng (nhận giá trị 1) thể hiện các vùng tế bào có khả năng bị ung thư, các vùng màu đen (nhận giá trị 0) là các vùng không có dấu hiệu của ung thư. 
+Biết chiều cao và chiều rộng của ảnh, hãy giúp các bác sĩ xác định các tế bào có khả năng bị ung thư trong vùng quan tâm của họ biết tọa độ góc trái trên và phải dưới của vùng này lần lượt là (top, left) và (bottom, right).
+
+INPUT
+h, w: lần lượt là chiều cao vào chiều rộng của ảnh
+h dòng tiếp theo, mỗi dòng chứa w số nhận giá trị là 0 hoặc 1 chính là bức ảnh các bác sĩ đang xem xét
+top, left, bottom, right: lần lượt là toạ độ trên, trái, phải, dưới của vùng được quan tâm
+
+OUTPUT
+Một bức ảnh nhị phân có kích thước (h,w) tương tự ảnh đầu vào với các tế bào ung thư nằm ngoài vùng quan tâm được chuyển thành giá trị 0 (màu đen)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+h, w = map(int, input().split())
+lst = []
+
+for i in range(h):
+  tem = input().split()
+  lst.append(tem)
+
+x1, y1, x2, y2 = map(int, input().split())
+zero = ""
+for i in range(w):
+  zero += '0 '
+
+for i in range(h):
+  if i < x1 or i > x2:
+    print(zero)
+  else:
+    row = ""
+    for j in range(w):
+      if j < y1 or j > y2:
+        row += '0 '
+      else: 
+        row += lst[i][j] + ' '
+    print(row)
