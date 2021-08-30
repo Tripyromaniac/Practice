@@ -1,0 +1,50 @@
+Cho một dãy số, hãy cho biết số node lá của cây nhị phân tìm kiếm thu được khi thêm lần lượt các số trong dãy vào cây.
+
+INPUT
+Một dãy số nguyên khác 0, mỗi số trên một hàng. Dãy số tận cùng bằng số 0
+
+OUTPUT
+Số node lá trong cây
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class Node:
+  def __init__(self, data, left=None, right=None):
+    self.data = data  
+    self.left = left
+    self.right = right
+
+
+def insert(root, data):
+    if root.data == data:
+      return
+    if root.data > data:
+      if root.left is None:
+        root.left = Node(data)
+      else:
+        return insert(root.left, data)
+    else:
+      if root.right is None:
+        root.right = Node(data)
+      else:
+        return insert(root.right, data)
+
+def leaf(Node):
+    current = [Node]
+    count = 0
+    while current:
+        nextStep = list()
+        for child in current:
+            if not child.left and not child.right: count += 1
+            if child.left: nextStep.append(child.left)
+            if child.right: nextStep.append(child.right)
+            current = nextStep
+    print(count)
+
+n = int(input())
+root = Node(n)
+while(n != 0):
+  insert(root, n)
+  n = int(input())
+
+leaf(root)
