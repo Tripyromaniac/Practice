@@ -1,0 +1,164 @@
+a,b,c,d = map(str, input().split())
+
+lst = [str(lst) for lst in input().split()]
+end = str(input())
+
+lst1 = []
+lst2 = []
+lst3 = []
+lst4 = []
+
+lst1 += 9*[a]
+lst2 += 9*[b]
+lst3 += 9*[c]
+lst4 += 9*[d]
+
+
+
+i = len(lst) - 1
+
+while i >= 0:
+    if lst[i] == "U":
+        lst1[0], lst4[8] = lst4[8], lst1[0]
+        lst3[4], lst4[8] = lst4[8], lst3[4]
+    elif lst[i] == "U'":
+        lst1[0], lst3[4] = lst3[4], lst1[0]
+        lst3[4], lst4[8] = lst4[8], lst3[4]           
+    elif lst[i] == "u":
+        
+        lst1[0], lst4[8] = lst4[8], lst1[0]
+        lst3[4], lst4[8] = lst4[8], lst3[4]
+        
+        lst1[1], lst4[3] = lst4[3], lst1[1]
+        lst3[6], lst4[3] = lst4[3], lst3[6]
+        
+        lst1[2], lst4[7] = lst4[7], lst1[2]
+        lst3[5], lst4[7] = lst4[7], lst3[5]
+
+        lst1[3], lst4[6] = lst4[6], lst1[3]          
+        lst3[1], lst4[6] = lst4[6], lst3[1]       
+        
+    elif lst[i] == "u'":
+        lst1[0], lst3[4] = lst3[4], lst1[0]
+        lst3[4], lst4[8] = lst4[8], lst3[4]  
+        
+        lst1[1], lst3[6] = lst3[6], lst1[1]
+        lst3[6], lst4[3] = lst4[3], lst3[6]
+        
+        lst1[2], lst3[5] = lst3[5], lst1[2]
+        lst3[5], lst4[7] = lst4[7], lst3[5]
+
+        lst1[3], lst3[1] = lst3[1], lst1[3]
+        lst3[1], lst4[6] = lst4[6], lst3[1]
+#---------------------------------------------------------1 3 4
+    elif lst[i] == "L":
+        lst1[4], lst3[0] = lst3[0], lst1[4]
+        lst3[0], lst2[8] = lst2[8], lst3[0]
+    elif lst[i] == "L'":
+        lst1[4], lst2[8] = lst2[8], lst1[4]
+        lst2[8], lst3[0] = lst3[0], lst2[8]
+    elif lst[i] == "l":
+
+        lst1[4], lst3[0] = lst3[0], lst1[4]
+        lst3[0], lst2[8] = lst2[8], lst3[0]
+
+        lst1[1], lst3[3] = lst3[3], lst1[1]
+        lst3[3], lst2[6] = lst2[6], lst3[3]
+
+        lst1[5], lst3[2] = lst3[2], lst1[5]
+        lst3[2], lst2[7] = lst2[7], lst3[2]
+
+        lst1[6], lst3[1] = lst3[1], lst1[6]
+        lst3[1], lst2[3] = lst2[3], lst3[1]
+
+    elif lst[i] == "l'":
+        lst1[4], lst2[8] = lst2[8], lst1[4]
+        lst2[8], lst3[0] = lst3[0], lst2[8]
+
+        lst1[1], lst2[6] = lst2[6], lst1[1]
+        lst2[6], lst3[3] = lst3[3], lst2[6]
+
+        lst1[5], lst2[7] = lst2[7], lst1[5]
+        lst3[2], lst2[7] = lst2[7], lst3[2]
+
+        lst1[6], lst2[3] = lst2[3], lst1[6]
+        lst3[1], lst2[3] = lst2[3], lst3[1]
+#---------------------------------------------------------1 2 3
+    elif lst[i] == "R'":
+        lst1[8], lst4[0] = lst4[0], lst1[8]
+        lst4[0], lst2[4] = lst2[4], lst4[0]
+    elif lst[i] == "R":
+        lst1[8], lst2[4] = lst2[4], lst1[8]
+        lst2[4], lst4[0] = lst4[0], lst2[4]
+    elif lst[i] == "r'":
+
+        lst1[8], lst4[0] = lst4[0], lst1[8]
+        lst4[0], lst2[4] = lst2[4], lst4[0]
+
+        lst1[3], lst4[1] = lst4[1], lst1[3]
+        lst4[1], lst2[6] = lst2[6], lst4[1]
+        
+        lst1[7], lst4[2] = lst4[2], lst1[7]
+        lst4[2], lst2[5] = lst2[5], lst4[2]
+
+        lst1[6], lst4[3] = lst4[3], lst1[6]
+        lst4[3], lst2[1] = lst2[1], lst4[3]
+    elif lst[i] == "r":
+
+        lst1[8], lst2[4] = lst2[4], lst1[8]
+        lst2[4], lst4[0] = lst4[0], lst2[4]
+
+        lst1[3], lst2[6] = lst2[6], lst1[3]
+        lst2[6], lst4[1] = lst4[1], lst2[6]
+        
+        lst1[7], lst2[5] = lst2[5], lst1[7]
+        lst2[5], lst4[2] = lst4[2], lst2[5]
+
+        lst1[6], lst2[1] = lst2[1], lst1[6]
+        lst2[1], lst4[3] = lst4[3], lst2[1]
+#---------------------------------------------------------1 2 4
+    elif lst[i] == "B'":
+        lst2[0], lst4[4] = lst4[4], lst2[0]
+        lst3[8], lst4[4] = lst4[4], lst3[8]
+    elif lst[i] == "B":
+        lst2[0], lst3[8] = lst3[8], lst2[0]
+        lst3[8], lst4[4] = lst4[4], lst3[8]
+    elif lst[i] == "b'":
+
+        lst2[0], lst4[4] = lst4[4], lst2[0]
+        lst3[8], lst4[4] = lst4[4], lst3[8]
+
+        lst2[1], lst4[6] = lst4[6], lst2[1]
+        lst3[3], lst4[6] = lst4[6], lst3[3]
+
+        lst2[2], lst4[5] = lst4[5], lst2[2]
+        lst3[7], lst4[5] = lst4[5], lst3[7]
+
+        lst2[3], lst4[1] = lst4[1], lst2[3]
+        lst3[6], lst4[1] = lst4[1], lst3[6]
+    elif lst[i] == "b":
+        lst2[0], lst3[8] = lst3[8], lst2[0]
+        lst3[8], lst4[4] = lst4[4], lst3[8]
+
+        lst2[1], lst3[3] = lst3[3], lst2[1]
+        lst3[3], lst4[6] = lst4[6], lst3[3]
+
+        lst2[2], lst3[7] = lst3[7], lst2[2]
+        lst3[7], lst4[5] = lst4[5], lst3[7]
+
+        lst2[3], lst3[6] = lst3[6], lst2[3]
+        lst3[6], lst4[1] = lst4[1], lst3[6]
+#---------------------------------------------------------2 3 4
+    i = i - 1
+
+
+
+
+ans = str(lst1) + "\n" + str(lst2) + "\n" + str(lst3) + "\n" + str(lst4)
+
+ans = ans.replace('[','')
+ans = ans.replace(']','')
+ans = ans.replace("'",'')
+ans = ans.replace(',','')
+
+print(ans)
