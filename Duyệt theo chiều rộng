@@ -1,0 +1,61 @@
+Cho một dãy số. Lần lượt thêm các số trong dãy vào một cây nhị phân tìm kiếm, sau đó duyệt và xuất cây ra màn hình theo thứ tự duyệt theo chiều rộng 
+(các node có mức thấp được xuất trước, đối với các node có cùng mức xuất node có giá trị nhỏ trước)
+
+INPUT
+Một dãy số nguyên khác 0, mỗi số trên một hàng. Dãy số tận cùng bằng số 0
+
+OUTPUT
+Xuất trên một hàng giá trị các node trên cây khi duyệt theo chiều rộng
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+from collections import deque
+
+class Node:
+  def __init__(self, data, left=None, right=None):
+    self.data = data  
+    self.left = left
+    self.right = right
+
+
+def insert(root, data):
+    if root.data == data:
+      return
+    if root.data > data:
+      if root.left is None:
+        root.left = Node(data)
+      else:
+        return insert(root.left, data)
+    else:
+      if root.right is None:
+        root.right = Node(data)
+      else:
+        return insert(root.right, data)
+
+                
+def print_levels_tree(root: Node):
+    q = deque()
+    q.append(root)
+    level, level_marker = 0, 1
+    while q:
+        if level_marker == 0:
+            level, level_marker = level + 1, len(q)
+            print("", end ='')
+        level_marker -= 1
+        node = q.popleft()
+        if (node is None):
+            continue
+        print(node.data, end = " ")
+        q.append(node.left)
+        q.append(node.right)
+    
+
+        
+n = int(input())
+root = Node(n)
+while(n != 0):
+    insert(root, n)
+    n = int(input())
+
+print_levels_tree(root)
