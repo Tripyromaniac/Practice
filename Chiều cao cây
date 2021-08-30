@@ -1,0 +1,82 @@
+Bạn Bình đã làm xong bài danh sách liên kết giờ chuyển qua bài cây nhị phân tìm kiếm. Hỏi nếu Bình đem danh sách đó nhập vào cây nhị phân tìm kiếm thì cây cao bao nhiêu?
+
+INPUT
+Input gồm nhiều dòng, mỗi dòng sẽ có cấu trúc ở 1 trong 4 dạng sau:
+- Dạng 0: Dòng bắt đầu bằng con số 0, theo sau là một số nguyên dương < 1000, chương trình cần phải thêm con số này vào đầu danh sách
+- Dạng 1: Dòng này bắt đầu bằng con số 1, theo sau là một số nguyên dương < 1000, chương trình cần phải thêm con số này vào cuối danh sách
+- Dạng 2: Dòng này bắt đầu bằng con số 2, theo sau là 2 số nguyên a, b < 1000, chương trình cần tìm vị trí đầu tiên mà số a xuất hiện trong danh sách, sau đó thêm số b vào sau số này. 
+          Nếu số a không có trong danh sách, thêm b vào đầu danh sách
+- Dạng 3: Dòng này bao gồm duy nhất một con số 3. Đây là dòng cuối cùng trong input, báo hiệu input kết thúc
+
+OUTPUT:
+Chiều cao của cây nhị phân tìm kiếm thu được khi lần lượt thêm các số trong danh sách vào cây.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import array as a
+import sys
+
+
+# Binary Tree ------------------------------------------------------------------
+
+class Node:
+  def __init__(self, data, left=None, right=None):
+    self.data = data  
+    self.left = left
+    self.right = right
+
+def insert(root, data):
+    if root.data == data:
+      return
+    if root.data > data:
+      if root.left is None:
+        root.left = Node(data)
+      else:
+        return insert(root.left, data)
+    else:
+      if root.right is None:
+        root.right = Node(data)
+      else:
+        return insert(root.right, data)
+
+def height(bst):
+    if bst == None :
+        return -1
+    else:
+        return 1 + max(height(bst.left), height(bst.right))
+
+#-------------------------------------------------------------------------------
+
+
+input = sys.stdin.readline
+
+output = a.array('L')
+
+while True:
+    iteInput = map(int, input().split())
+    control = next(iteInput)
+
+    if control == 0:
+        output.insert(0, next(iteInput))
+    elif control == 1:
+        output.append(next(iteInput))
+    elif control == 2:
+        x = next(iteInput)
+        y = next(iteInput)
+        if x in output:
+            output.insert(output.index(x) + 1, y)
+        else:
+            output.insert(0, y)
+    else:
+        break
+
+if len(output) == 0: 
+    print("")
+else:
+    n = output[0]
+    root = Node(n)
+    for i in range(1,len(output)):
+        insert(root, n)
+        n = output[i]
+ 
+print(height(root)+1)
